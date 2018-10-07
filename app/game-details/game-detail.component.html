@@ -1,0 +1,39 @@
+<ActionBar title="Game Details" class="action-bar"></ActionBar>
+
+<FlexboxLayout flexDirection="column" class="page" >
+    <FlexboxLayout class="m-15">
+        <Label class="h2" [text]="game.homeTeam" width="50%" textAlignment="center"></Label>
+        <Label class="h2" [text]="game.awayTeam" width="50%" textAlignment="center"></Label>
+    </FlexboxLayout>
+    <FlexboxLayout class="m-15">
+        <Label class="h3" [text]="game.sport"></Label>
+        <Label class="h3" [text]="game.country"></Label>
+        <Label class="h3" [text]="game.league"></Label>
+    </FlexboxLayout>
+
+    <GridLayout columns="*, auto" class="date-bar">
+        <Label class="h2" [text]="game.date|date:'dd/MM/yyyy HH:mm'" col="0" width="80%"></Label>
+        <Image src="~/images/refreash.png" (tap)="refreash()" col="1"></Image>
+    </GridLayout>
+
+    <FlexboxLayout class="m-15">
+        <Label class="h2" text="Home"></Label>
+        <Label class="h2" text="Draw"></Label>
+        <Label class="h2" text="Away"></Label>
+    </FlexboxLayout>
+    <FlexboxLayout class="m-15">
+        <Label class="h2" [text]="game.homeMeanOdd|number:'1.2-2'"></Label>
+        <Label class="h2" [text]="game.drawMeanOdd|number:'1.2-2'"></Label>
+        <Label class="h2" [text]="game.awayMeanOdd|number:'1.2-2'"></Label>
+    </FlexboxLayout>
+    <FlexboxLayout class="m-15">
+        <TextField class="input input-border" [(ngModel)]="homeBooker" keyboardType="number"></TextField>
+        <TextField class="input input-border" [(ngModel)]="drawBooker" keyboardType="number"></TextField>
+        <TextField class="input input-border" [(ngModel)]="awayBooker" keyboardType="number"></TextField>
+    </FlexboxLayout>
+    <FlexboxLayout class="m-15">
+        <Label class="h2 m-l-5" backgroundcolor="green" [text]="homeBet|number:'1.2-2'" (tap)="betHome()"></Label>
+        <Label class="h2 m-l-5" backgroundcolor="green" [text]="drawBet|number:'1.2-2'" (tap)="betDraw()"></Label>
+        <Label class="h2 m-l-5" backgroundcolor="green" [text]="awayBet|number:'1.2-2'" (tap)="betAway()"></Label>
+    </FlexboxLayout>
+</FlexboxLayout>

@@ -1,0 +1,17 @@
+<FlexboxLayout>
+    <GridLayout rows="auto, *">
+        <StackLayout class="form" row="0" [disabled]="isLoggingIn">
+            <TextField hint="Email Address" keyboardType="email" 
+                autocorrect="false" autocapitalizationType="none" class="input input-border"
+                [text]="user.email" (textChange)="user.email=$event.object.text"></TextField>
+            <TextField hint="Password" secure="true" class="input input-border" 
+                [text]="user.password" (textChange)="user.password=$event.object.text"></TextField>
+
+            <Button text="Sign in" class="btn btn-primary" (tap)="login()"></Button>
+        </StackLayout>
+
+        <ActivityIndicator row="0" [busy]="isLoggingIn" [visibility]="isLoggingIn ? 'visible' : 'collapse'" 
+            horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+    </GridLayout>
+
+</FlexboxLayout>

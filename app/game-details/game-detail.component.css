@@ -1,0 +1,24 @@
+.date-bar {
+    background-color: #CB1D00;
+    height: 35;
+  }
+.date-bar Image {
+    height: 25;
+    vertical-align: center;
+    margin-left: 10;
+    margin-right: 10;
+  }
+
+FlexboxLayout {
+    justify-content: center;
+  }
+
+Label {
+  text-align: center;
+  width: 30%;
+}
+
+TextField {
+  text-align: center;
+  width: 30%;
+}
