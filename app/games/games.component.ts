@@ -35,7 +35,7 @@ export class GamesComponent implements OnInit {
         this.gamesService.currentDownloadingGames.subscribe(s => this.downloading = s);
     }
 
-    async refreash() {
+    async refresh() {
         try {
             await this.gamesService.downloadGames(this.minutes);
         } catch (e) {

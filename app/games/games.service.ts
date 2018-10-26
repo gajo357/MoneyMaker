@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { GameInfo } from "./game-info";
-import { Game } from '../game-details/game';
+import { Game, Odds } from '../game-details/game';
 import { BehaviorSubject } from 'rxjs';
 import { Config } from '../config';
 
@@ -51,15 +51,20 @@ export class GamesService {
         }
     }
 
-    async getGame(gameLink: string): Promise<Game> {
-        // return await this.http.post<Game>(
-        //     Config.apiUrl + "api/games/singleGame",
-        //     { link: gameLink },
-        //     { headers: this.getCommonHeaders() }
-        // ).toPromise();
-        
-        const game = this.games.find(g => g.gameLink === gameLink);
-        return new Promise<Game>(resolve => resolve(game));
+    getGame(gameLink: string): Game {
+        return this.games.find(g => g.gameLink === gameLink);
+    }
+
+    async getAmounts(myOdds, bookerOdds, amount): Promise<Odds> {
+        return await this.http.post<Odds>(
+            Config.apiUrl + "api/CalculateAmounts",
+            { 
+                Amount: amount,
+                MyOdds: myOdds,
+                BookerOdds: bookerOdds 
+            },
+            { headers: this.getCommonHeaders() }
+        ).toPromise();
     }
 
     private getCommonHeaders() {

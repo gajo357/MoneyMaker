@@ -5,3 +5,7 @@ export interface Game extends GameInfo {
     homeMeanOdd: number, drawMeanOdd: number, awayMeanOdd: number,
     homeOdd: number, drawOdd: number, awayOdd: number
 }
+
+export interface Odds {
+    home: number, draw: number, away: number
+}
