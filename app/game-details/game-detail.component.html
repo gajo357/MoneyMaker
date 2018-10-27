@@ -13,7 +13,7 @@
 
     <GridLayout columns="*, auto" class="date-bar">
         <Label class="h2" [text]="game.date|date:'dd/MM/yyyy HH:mm'" col="0" width="80%"></Label>
-        <Image src="~/images/refresh.png" (tap)="refresh()" col="1"></Image>
+        <Image src="~/images/refresh.png" (tap)="calculateBets()" col="1"></Image>
     </GridLayout>
 
     <FlexboxLayout class="m-15">

@@ -32,11 +32,17 @@ export class GameDetailComponent implements OnInit {
         this.gamesService.currentAmount.subscribe(a => this.availableAmount = a);
         
         this.setGame(this.gameLink);
+
+        this.calculateBets();
     }
 
-    async refresh() {
+    async calculateBets() {
         try {
-            await this.calculateBets();
+            const amounts = await this.gamesService.getAmounts(this.myOdds(), this.bookerOdds(), this.availableAmount);
+        
+            this.homeBet = amounts.home;
+            this.drawBet = amounts.draw;
+            this.awayBet = amounts.away;
         } catch(e) {
             alert(e);
         }
@@ -48,14 +54,6 @@ export class GameDetailComponent implements OnInit {
         this.homeBooker = this.game.homeOdd;
         this.drawBooker = this.game.drawOdd;
         this.awayBooker = this.game.awayOdd;
-    }
-
-    private async calculateBets() {
-        const amounts = await this.gamesService.getAmounts(this.myOdds(), this.bookerOdds(), this.availableAmount);
-        
-        this.homeBet = amounts.home;
-        this.drawBet = amounts.draw;
-        this.awayBet = amounts.away;
     }
 
     betHome() {
